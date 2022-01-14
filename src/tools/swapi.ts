@@ -107,6 +107,7 @@ export default class Swapi {
   }
 
   private static async fetchData(url: string): Promise<RequestAnswer> {
+    console.count('#### Fetching data');
     const response = await fetch(url);
 
     return await response.json();

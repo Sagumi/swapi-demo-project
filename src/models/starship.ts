@@ -1,7 +1,10 @@
+import { v4 as uuidv4 } from 'uuid';
 import { StarshipSchema } from '../tools/swapi';
 import People from './people';
 
 export default class Starship {
+  private _uuid: string = uuidv4();
+  private _schemaBackup: StarshipSchema;
   private _mglt: string;
   private _cargoCapacity: number;
   private _consumables: string;
@@ -41,6 +44,8 @@ export default class Starship {
       cargo_capacity,
     } = schema;
 
+    this._schemaBackup = schema;
+
     this._consumables = consumables;
     this._mglt = MGLT;
     this._cargoCapacity = Number(cargo_capacity);
@@ -56,6 +61,10 @@ export default class Starship {
     this._filmAddressList = films;
     this._pilotsAddressList = pilots;
     this._starshipClass = starship_class;
+  }
+
+  get UUID(): string {
+    return this._uuid;
   }
 
   get MGLT(): string {
@@ -184,5 +193,9 @@ export default class Starship {
 
   set StarshipClass(value: string) {
     this._starshipClass = value;
+  }
+
+  toJSON(): StarshipSchema {
+    return this._schemaBackup;
   }
 }
