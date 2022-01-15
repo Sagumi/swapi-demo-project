@@ -15,7 +15,7 @@ export default class Fleet {
 
   async addShip(schema: StarshipSchema): Promise<void> {
     const newStarship: Starship = new Starship(schema);
-    // newStarship.PilotList = (await Swapi.fetchShipPilotList(schema)).map(peopleSchema => new People(peopleSchema));
+    newStarship.PilotList = (await Swapi.fetchShipPilotList(schema)).map(peopleSchema => new People(peopleSchema));
     this._fleet.push(newStarship);
   }
 

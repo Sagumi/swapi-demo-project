@@ -1,15 +1,15 @@
 import React, { PureComponent } from 'react';
 import Styled from 'styled-components';
 import StarshipModel from '../models/starship';
-import AppController from '../controller/app_controller';
+import Starship from '../models/starship';
 
-interface StarshipProps {
+interface StarshipDisplayProps {
   model: StarshipModel;
-  controller: AppController;
   isSelected: boolean;
+  shipSelectionCallback: (ship: Starship) => void;
 }
 
-interface StarshipState {
+interface StarshipDisplayState {
 }
 
 const Container = Styled.div<{ Selected: boolean }>`
@@ -21,22 +21,33 @@ const Container = Styled.div<{ Selected: boolean }>`
   border-radius: 5px;
   margin: 0 5px 5px 5px;
   padding: 5px;
-  border: 1px solid black;
+  border: 1px solid #c9b264;
   cursor: pointer;
-  background: ${props => props.Selected ? '#cecece' : 'transparent'};
+  background: ${props => props.Selected ? '#26282a' : 'transparent'};
   white-space: nowrap;
+  color: #c9b264;
+  pointer-events: ${props => props.Selected ? 'none' : 'all'};
+  transition: all 100ms ease;
+
+  &:hover {
+    color: #9f8738;
+    border-color: #9f8738;
+  }
 `;
 
-export default class Starship extends PureComponent<StarshipProps, StarshipState> {
-  constructor(props: StarshipProps) {
+export default class Starship_display extends PureComponent<StarshipDisplayProps, StarshipDisplayState> {
+  constructor(props: StarshipDisplayProps) {
     super(props);
 
     this.handleCardClick = this.handleCardClick.bind(this);
   }
 
   handleCardClick(): void {
-    const { controller, model } = this.props;
-    controller.selectStarship(model);
+    const { shipSelectionCallback, model, isSelected } = this.props;
+
+    if (!isSelected) {
+      shipSelectionCallback(model);
+    }
   }
 
   render(): JSX.Element {

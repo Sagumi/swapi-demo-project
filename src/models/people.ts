@@ -40,107 +40,107 @@ export default class People {
     return this._uuid;
   }
 
-  get gender(): string {
+  get Gender(): string {
     return this._gender;
   }
 
-  set gender(value: string) {
+  set Gender(value: string) {
     this._gender = value;
   }
 
-  get mass(): number {
+  get Mass(): number {
     return this._mass;
   }
 
-  set mass(value: number) {
+  set Mass(value: number) {
     this._mass = value;
   }
 
-  get skinColor(): string {
+  get SkinColor(): string {
     return this._skinColor;
   }
 
-  set skinColor(value: string) {
+  set SkinColor(value: string) {
     this._skinColor = value;
   }
 
-  get speciesUrlList(): Array<string> {
+  get SpeciesUrlList(): Array<string> {
     return this._speciesUrlList;
   }
 
-  set speciesUrlList(value: Array<string>) {
+  set SpeciesUrlList(value: Array<string>) {
     this._speciesUrlList = value;
   }
 
-  get birthYear(): string {
+  get BirthYear(): string {
     return this._birthYear;
   }
 
-  set birthYear(value: string) {
+  set BirthYear(value: string) {
     this._birthYear = value;
   }
 
-  get eyecolor(): string {
+  get Eyecolor(): string {
     return this._eyecolor;
   }
 
-  set eyecolor(value: string) {
+  set Eyecolor(value: string) {
     this._eyecolor = value;
   }
 
-  get hairColor(): string {
+  get HairColor(): string {
     return this._hairColor;
   }
 
-  set hairColor(value: string) {
+  set HairColor(value: string) {
     this._hairColor = value;
   }
 
-  get height(): number {
+  get Height(): number {
     return this._height;
   }
 
-  set height(value: number) {
+  set Height(value: number) {
     this._height = value;
   }
 
-  get homeworldUrl(): string {
+  get HomeworldUrl(): string {
     return this._homeworldUrl;
   }
 
-  set homeworldUrl(value: string) {
+  set HomeworldUrl(value: string) {
     this._homeworldUrl = value;
   }
 
-  get name(): string {
+  get Name(): string {
     return this._name;
   }
 
-  set name(value: string) {
+  set Name(value: string) {
     this._name = value;
   }
 
-  get filmsUrlList(): Array<string> {
+  get FilmsUrlList(): Array<string> {
     return this._filmsUrlList;
   }
 
-  set filmsUrlList(value: Array<string>) {
+  set FilmsUrlList(value: Array<string>) {
     this._filmsUrlList = value;
   }
 
-  get starshipsUrlList(): Array<string> {
+  get StarshipsUrlList(): Array<string> {
     return this._starshipsUrlList;
   }
 
-  set starshipsUrlList(value: Array<string>) {
+  set StarshipsUrlList(value: Array<string>) {
     this._starshipsUrlList = value;
   }
 
-  get vehiclesUrlList(): Array<string> {
+  get VehiclesUrlList(): Array<string> {
     return this._vehiclesUrlList;
   }
 
-  set vehiclesUrlList(value: Array<string>) {
+  set VehiclesUrlList(value: Array<string>) {
     this._vehiclesUrlList = value;
   }
 

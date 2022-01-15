@@ -1,5 +1,4 @@
 import Fleet from '../models/fleet';
-import TestData from '../test_data';
 import AppModel from '../models/app_model';
 import Starship from '../models/starship';
 import People from '../models/people';
@@ -21,14 +20,9 @@ export default class AppController {
   }
 
   async initialDataLoad(): Promise<void> {
-    // const shipList = await Swapi.fetchShips();
-    //
-    // for (const ship of shipList) {
-    //   await this.Fleet.addShip(ship);
-    // }
-    // console.log(JSON.stringify(this.Fleet, null, 2));
+    const shipList = await Swapi.fetchShips();
 
-    for (const ship of TestData) {
+    for (const ship of shipList) {
       await this.Fleet.addShip(ship);
     }
 

@@ -1,13 +1,12 @@
 import React, { PureComponent } from 'react';
 import Styled from 'styled-components';
-import Fleet from '../models/fleet';
 import Starship from '../models/starship';
-import StarshipCard from './starship';
-import AppController from '../controller/app_controller';
+import StarshipDisplay from './starship_display';
 
 interface HSPageProps {
   shipList: Array<Starship>;
-  controller: AppController;
+  selectedShip: Starship | null;
+  shipSelectionCallback: (ship: Starship) => void;
 }
 
 interface HSPageState {
@@ -23,12 +22,14 @@ const Container = Styled.div`
 
 export default class ShipMenu extends PureComponent<HSPageProps, HSPageState> {
   render(): JSX.Element {
-    const starshipToDisplay = this.props.shipList.map(ship => (
-        <StarshipCard
+    const { shipList, selectedShip, shipSelectionCallback } = this.props;
+
+    const starshipToDisplay = shipList.map(ship => (
+        <StarshipDisplay
           key={ship.UUID}
           model={ship}
-          controller={this.props.controller}
-          isSelected={ship === this.props.controller.SelectedStarship}
+          isSelected={ship === selectedShip}
+          shipSelectionCallback={shipSelectionCallback}
         />
       ),
     );
