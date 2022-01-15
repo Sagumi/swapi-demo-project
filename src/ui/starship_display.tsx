@@ -28,10 +28,23 @@ const Container = Styled.div<{ Selected: boolean }>`
   color: #c9b264;
   pointer-events: ${props => props.Selected ? 'none' : 'all'};
   transition: all 100ms ease;
+  width: 15%;
 
   &:hover {
     color: #9f8738;
     border-color: #9f8738;
+  }
+  
+  > div {
+    font-size: 0.8em;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+    &:first-of-type {
+      font-size: 1em;
+    }
   }
 `;
 
@@ -50,11 +63,22 @@ export default class Starship_display extends PureComponent<StarshipDisplayProps
     }
   }
 
+  getCostString(cost: number): string {
+    if (cost == undefined || Number.isNaN(cost)) {
+      return 'Contact us for a quote!';
+    }
+
+    return `${cost.toLocaleString()} credits`;
+  }
+
   render(): JSX.Element {
-    const { Name } = this.props.model;
+    const { Name, Manufacturer, Cost } = this.props.model;
+
     return (
       <Container onClick={this.handleCardClick} Selected={this.props.isSelected}>
         <div>{Name}</div>
+        <div>{Manufacturer}</div>
+        <div>{this.getCostString(Cost)}</div>
       </Container>
     );
   }

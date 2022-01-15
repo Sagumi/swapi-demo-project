@@ -49,6 +49,7 @@ const Logo = Styled.img`
 
 export default class App extends Component<AppProps, AppState> {
   private _controller: AppController;
+  private _shipDetailRef = React.createRef<HTMLDivElement>();
 
   constructor(props: AppProps) {
     super(props);
@@ -84,7 +85,9 @@ export default class App extends Component<AppProps, AppState> {
 
   handleShipSelected(ship: Starship): void {
     this.clearPilotSelection();
-    this.setState({ selectedShip: ship });
+    this.setState({ selectedShip: ship }, () => {
+      this._shipDetailRef.current?.scrollIntoView({ behavior: 'smooth' });
+    });
   }
 
   clearShipSelection(): void {
@@ -113,7 +116,9 @@ export default class App extends Component<AppProps, AppState> {
             selectedShip={selectedShip}
             shipSelectionCallback={this.handleShipSelected}
           />
-          <ShipDetail model={selectedShip} closeCallback={this.clearShipSelection} />
+          <div ref={this._shipDetailRef}>
+            <ShipDetail model={selectedShip} closeCallback={this.clearShipSelection} />
+          </div>
           <PilotContainer>
             <PilotMenu pilotList={selectedShip?.PilotList || []} pilotSelectionCallback={this.handlePilotSelected} selectedPilot={selectedPilot} />
             <PilotDetail model={selectedPilot} closeCallback={this.clearPilotSelection} />

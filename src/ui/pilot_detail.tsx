@@ -47,14 +47,38 @@ export default class PilotDetail extends PureComponent<PilotDetailProps, PilotDe
     return (
       <Container fullSize={!!model}>
         <CloseButton onClick={this.handleCloseButtonClick} />
-        <InfoDisplay title={'Name'} text={model ? model.Name : ''} />
-        <InfoDisplay title={'Birth Year'} text={model ? model.BirthYear : ''} />
-        <InfoDisplay title={'Gender'} text={model ? model.Gender : ''} />
-        <InfoDisplay title={'Eye Color'} text={model ? model.Eyecolor : ''} />
-        <InfoDisplay title={'Hair Color'} text={model ? model.HairColor : ''} />
-        <InfoDisplay title={'Skin Color'} text={model ? model.SkinColor : ''} />
-        <InfoDisplay title={'Mass'} text={`${model ? model.Mass : ''}`} />
-        <InfoDisplay title={'Height'} text={`${model ? model.Height : ''}`} />
+        <InfoDisplay
+          title={'Name'}
+          text={model?.Name || '--'}
+        />
+        <InfoDisplay
+          title={'Birth Year'}
+          text={model?.BirthYear || '--'}
+        />
+        <InfoDisplay
+          title={'Gender'}
+          text={model?.Gender || '--'}
+        />
+        <InfoDisplay
+          title={'Eye Color'}
+          text={model?.Eyecolor || '--'}
+        />
+        <InfoDisplay
+          title={'Hair Color'}
+          text={model?.HairColor || '--'}
+        />
+        <InfoDisplay
+          title={'Skin Color'}
+          text={model?.SkinColor || '--'}
+        />
+        <InfoDisplay
+          title={'Mass'}
+          text={`${model?.Mass || '--'}`}
+        />
+        <InfoDisplay
+          title={'Height'}
+          text={`${model?.Height || '--'}`}
+        />
       </Container>
     );
   }
