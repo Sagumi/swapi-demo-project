@@ -25,6 +25,7 @@ const Container = Styled.div<ContainerProps>`
   transition: all 300ms ease;
   white-space: nowrap;
   overflow: hidden;
+  justify-content: flex-start;
 }
 `;
 

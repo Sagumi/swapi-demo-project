@@ -74,10 +74,17 @@ export default class Swapi {
   static async fetchShipPilotList(starship: StarshipSchema): Promise<Array<PeopleSchema>> {
     const arr: Array<PeopleSchema> = [];
 
+    const promiseArray: Array<Promise<void>> = [];
+
     for (const pilotLink of starship.pilots) {
-      const answer = <PeopleSchema>await Swapi.fetchDataWithID(pilotLink);
-      arr.push(answer);
+      promiseArray.push(new Promise<void>(async resolve => {
+        const answer = <PeopleSchema>await Swapi.fetchDataWithID(pilotLink);
+        arr.push(answer);
+        resolve();
+      }));
     }
+
+    await Promise.all(promiseArray);
 
     return arr;
   }

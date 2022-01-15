@@ -8,6 +8,7 @@ import PilotMenu from './ui/pilot_menu';
 import People from './models/people';
 import ShipDetail from './ui/ship_detail';
 import PilotDetail from './ui/pilot_detail';
+import LogoPng from './ui/images/sw_logo.png';
 
 interface AppProps {}
 
@@ -19,12 +20,8 @@ interface AppState {
 }
 
 const Container = Styled.div`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
   background: #303338;
+  user-select; none;
 `;
 
 const Content = Styled.div`
@@ -42,6 +39,12 @@ const Filler = Styled.div`
 const PilotContainer = Styled.div`
   display: flex;
   flex-direction: row;
+`;
+
+const Logo = Styled.img`
+  height: 200px;
+  display: flex;
+  margin: 0 auto;
 `;
 
 export default class App extends Component<AppProps, AppState> {
@@ -80,6 +83,7 @@ export default class App extends Component<AppProps, AppState> {
   }
 
   handleShipSelected(ship: Starship): void {
+    this.clearPilotSelection();
     this.setState({ selectedShip: ship });
   }
 
@@ -121,6 +125,7 @@ export default class App extends Component<AppProps, AppState> {
 
     return (
       <Container>
+        <Logo src={LogoPng} />
         <Content>
           {content}
         </Content>
